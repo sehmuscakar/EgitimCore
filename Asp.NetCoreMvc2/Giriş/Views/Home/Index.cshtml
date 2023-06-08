@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    string metin = "ASP.NET Core";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@section Scripts{
+    <script>
+        console.log("Bu yazı Sripts section ı ile gönderildi") // biz burda bu viewden layota bulunan sectiona veri gönderdik
+    </script>
+}
+
+@metin
+
+<h2>@metin</h2>
+@* html helpers lerin kullanımı*@
+@Html.CheckBox("Onay") Onaylıyorum 
+@* partial kullanımları*@
+@Html.Partial("_PartialView")
+
+<hr />
+
+<partial name="_PartialView" />
+
+@await  Html.PartialAsync("_PartialView") @*ikinci paremetre olarak ta model kullanabilirsin*@
+
+@* controllerdan viewe veri gönderme *@
+
+<h3> Kategori: @ViewBag.UrunKategorisi</h3>
+
+<h3> Ürün Adı: @ViewData["UrunAdi"]</h3>
+
+<h3> Ürün Fiyatı: @TempData["UrunFiyati"] TL</h3>
+
+@* viewden  controllera veri gönderme ,post ile*@
+
+
+<form asp-action="Index">
+
+    @Html.TextBox("urunkategorisi") @* conrtolerdaki action paremetrelerdeki isim ile aynı olmalı *@
+    <hr />
+    @Html.TextBox("urunAdi")
+    <hr />
+    @Html.TextBox("urunFiyati")
+    <br />
+    <input type="submit" value="gönder" />
+
+</form>
+@* viewden  controllera veri gönderme ,get ile*@
+<form asp-action="Index" method="get">
+
+ 
+    @Html.TextBox("kelime")
+    <br />
+    <input type="submit" value="Ara" />
+
+</form>
+
+
+<h3>Cookie</h3>
+
+<p>Cookie deki veri:@TempData["CookieOKu"]</p>
+
+<h3>Session</h3>
+
+<p>Session daki veri:@TempData["SeesionOku"]</p> @* session u kullanabilmen için program.cs de configrasyon ayarrlarını yapman lazızm servisi eklemen  lazım *@
+
+
+

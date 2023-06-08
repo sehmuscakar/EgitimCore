@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "FileUpload";
+}
+
+<h1>FileUpload</h1>
+
+<form asp-action="FileUpload" enctype="multipart/form-data">
+    @* enctype="multipart/form-data bunu resim yukleyeceğimiz için kullanıyoruz *@
+
+    <input type="file" name="Image"/>
+    <input type="submit" value="Yükle"/>
+</form>
+
+<img src="/Img/@TempData["Resim"]" alt="" height="150" />

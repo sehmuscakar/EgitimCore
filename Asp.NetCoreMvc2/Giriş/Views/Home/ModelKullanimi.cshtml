@@ -1,0 +1,21 @@
+﻿@model Urun
+@{
+    // get ile 
+    <h4>Ürün Adı: @Model.Name</h4>
+    <h4>Ürün Açıklaması: @Model.Description</h4>
+    <h4>Ürün Fiyatı: @Model.Price</h4>
+ 
+}
+
+@*post ile*@
+
+<form asp-action="ModelKullanimi" >
+
+    <div asp-validation-summary="All" class="text-danger"></div> @* validasyon hatalarını göstermek için*@
+    <input type="text" value="" asp-for="Name" />
+    <input type="text" value="" asp-for="Description" />
+    <input type="text" value="" asp-for="Price" />
+    
+    <br />
+    <input  type="submit" value="Gönder"/>
+</form>
